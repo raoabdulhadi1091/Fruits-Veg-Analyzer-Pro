@@ -125,10 +125,23 @@ DATA_LABELS = [
 IMG_HEIGHT = 180
 IMG_WIDTH = 180
 
+import os
+import gdown  # Agar gdown installed na ho toh requirements.txt mein 'gdown' add kar lena
+
 @st.cache_resource
 def load_trained_model():
-    return load_model("Fruits_Vegetables_model.keras")
-
+    model_path = "Fruits_Vegetables_model.keras"
+    
+    # Agar file local folder mein nahi hai, toh Google Drive se download karo
+    if not os.path.exists(model_path):
+        # Yahan apni Google Drive ki File ID dalen
+        file_id = "AAP_KI_GOOGLE_DRIVE_FILE_ID_YAHAN_AAYEGI"
+        url = f'https://drive.google.com/uc?id={file_id}'
+        
+        with st.spinner("Downloading AI model weights from secure cloud storage... Please wait ⏳"):
+            gdown.download(url, model_path, quiet=False)
+            
+    return load_model(model_path)
 # 3. Sidebar Navigation Panel (Wapas Sidebar mein set kar diya hai)
 with st.sidebar:
     st.markdown("<h2 style='text-align: center; color: #34d399; font-weight: 700; letter-spacing: 1px;'>⚡ NEURAL HUD</h2>", unsafe_allow_html=True)

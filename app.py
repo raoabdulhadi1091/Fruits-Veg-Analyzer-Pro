@@ -135,8 +135,8 @@ def load_trained_model():
     # Agar file local folder mein nahi hai, toh Google Drive se download karo
     if not os.path.exists(model_path):
         # Yahan apni Google Drive ki File ID dalen
-        file_id = "AAP_KI_GOOGLE_DRIVE_FILE_ID_YAHAN_AAYEGI"
-        url = f'https://drive.google.com/uc?id={file_id}'
+        file_id = "1fogAeMoZ1ujuoWe2cyCqBYJA3RQ4h42d"
+        url = "https://drive.google.com/file/d/1fogAeMoZ1ujuoWe2cyCqBYJA3RQ4h42d/view?usp=sharing"
         
         with st.spinner("Downloading AI model weights from secure cloud storage... Please wait ⏳"):
             gdown.download(url, model_path, quiet=False)

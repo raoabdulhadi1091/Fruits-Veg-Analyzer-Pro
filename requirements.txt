@@ -1,5 +1,6 @@
-tensorflow
+tensorflow-cpu
 streamlit
 numpy
 pillow
 plotly
+gdown
